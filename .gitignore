@@ -1,0 +1,15 @@
+# data
+raw/
+blob/
+
+# compiled
+.pyc
+
+# notebooks
+.ipynb
+
+# misc
+.DS_Store
+.env
+.idea
+.ipynb_checkpoints/
