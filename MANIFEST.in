@@ -1,0 +1,5 @@
+# Include the Readme
+include README.rst
+
+# Include the License file
+include LICENSE

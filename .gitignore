@@ -3,10 +3,10 @@ raw/
 blob/
 
 # compiled
-.pyc
+*.pyc
 
 # notebooks
-.ipynb
+*.ipynb
 
 # misc
 .DS_Store
