@@ -43,10 +43,9 @@ def _build_engine(args):
             _ = opt and func(opt)
     
     return engine
-            
 
-if __name__ == '__main__':
-
+def main():
+    
     # Initialize Parser
     parser = ArgumentParser(
         formatter_class=RawDescriptionHelpFormatter,
@@ -143,3 +142,8 @@ if __name__ == '__main__':
     
     # Run Engine
     engine.run()
+            
+
+if __name__ == '__main__':
+    main()
+    

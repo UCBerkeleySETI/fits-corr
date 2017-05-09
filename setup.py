@@ -32,6 +32,11 @@ setup(
     author_email='pragaash.io@gmail.com',
     license='MIT',
     packages=['fits_corr'],
+    entry_points={
+        'console_scripts': [
+            'fits_corr = fits_corr.__main__:main'
+        ]
+    },
     install_requires=[
         'numpy>=1.11.3', 
         'scipy>=0.19.0', 
