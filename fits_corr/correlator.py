@@ -81,12 +81,24 @@ class Correlator(object):
     
     def save_config(self, save_dir):
         """
-        # TODO
+        Saves the current configuration to the directory specified by
+        <save_dir> into a file named _CONFIG.json.
+        
+        Input
+        -----
+        save_dir  : Save directory path.
+        
+        Output
+        ------
+        Returns the current correlator (self).
+        
         """
         if not path.exists(save_dir):
             makedirs(save_dir)
         
         self._json_writer(self.props, path.join(save_dir, '_CONFIG.json'))
+        
+        return self
     
     def set_align_window(self, span):
         """
@@ -297,7 +309,18 @@ class Correlator(object):
     
     def _align_fast(self, on_data, off_data):
         """
-        # TODO
+        Internal method to align the <on_data> with the <off_data>
+        by shifting in frequencies.
+        
+        Inputs
+        ------
+        on_data   : On data matrix.
+        off_data  : Off data matrix.
+        
+        Output
+        ------
+        The amount the <on_data> needs to shift over the <off_data>.
+        
         """
         valid_window = 0 < self.props['align_window'] < on_data.shape[1]
         assert valid_window, 'Error: Invalid Window Size!'
@@ -319,7 +342,18 @@ class Correlator(object):
     
     def _prmi(self, on_data, off_data, norm=True):
         """
-        # TODO
+        Internal method to compute the PCA Regional Mutual Information score
+        for the given <on_data> and <off_data>.
+        
+        Inputs
+        ------
+        on_data   : On data matrix.
+        off_data  : Off data matrix.
+        
+        Output
+        ------
+        Float value for the PRMI score.
+        
         """        
         N, d = on_data.shape
         radius = self.props['prmi_radius']
@@ -340,7 +374,18 @@ class Correlator(object):
     
     def _mi(self, on_data, off_data, norm=True):
         """
-        # TODO
+        Internal method to compute the Mutual Information score for the 
+        given <on_data> and <off_data>.
+        
+        Inputs
+        ------
+        on_data   : On data matrix.
+        off_data  : Off data matrix.
+        
+        Output
+        ------
+        Float value for the mutual information score.
+        
         """
         return utils.mutual_info(
             on_data.flatten(), 
@@ -351,7 +396,23 @@ class Correlator(object):
     
     def _pcc(self, on_data, off_data):
         """
-        # TODO
+        Internal method to compute the Pearson Correlation Coefficient scores
+        for the given <on_data> and <off_data>. The scores computed are of 4
+        variants:
+            - global image
+            - spatial image
+            - distribution of time component
+            - distribution of frequency component
+        
+        Inputs
+        ------
+        on_data   : On data matrix.
+        off_data  : Off data matrix.
+        
+        Output
+        ------
+        Dictionary of scores, each is a float value for the PCC score.
+        
         """
         on_fv = utils.whiten_data(on_data)
         off_fv = utils.whiten_data(off_data)
@@ -371,7 +432,18 @@ class Correlator(object):
     
     def _ssim(self, on_data, off_data):
         """
-        # TODO
+        Internal method to compute the Structural Similarity Index score
+        for the given <on_data> and <off_data>.
+        
+        Inputs
+        ------
+        on_data   : On data matrix.
+        off_data  : Off data matrix.
+        
+        Output
+        ------
+        Float value for the SSIM score.
+        
         """
         return compare_ssim(
             utils.remap_data(on_data, max_val=1, dtype='f4'),
@@ -381,7 +453,19 @@ class Correlator(object):
         
     def _score_one(self, on_fp, off_fp):
         """
-        # TODO
+        Internal method to compute the correlator metrics on the given
+        .fits pair, <on_fp> and <off_fp> for both the unaligned and
+        aligned data.
+        
+        Inputs
+        ------
+        on_fp   : On .fits file path.
+        off_fp  : Off .fits file path.
+        
+        Output
+        ------
+        Dictionary of scores and metrics for the given .fits pair.
+        
         """
         on_data = utils.open_fits(on_fp)
         off_data = utils.open_fits(off_fp)
@@ -409,7 +493,17 @@ class Correlator(object):
     
     def _score_multi(self, data_dir, show_progress=True):
         """
-        # TODO
+        Internal method to process the FITS pairs in the given <data_dir>.
+        Runs sequentially if multiprocessing is disabled.
+        
+        Input
+        -----
+        data_dir  : Path to directory containing .fits files.
+        
+        Output
+        ------
+        An array of Python dictionaries, each for every FITS pair.
+        
         """
         stdout.write(u'\u250c\u2500 Processing Directory: %s\n' %data_dir)
         stdout.flush()
@@ -448,14 +542,22 @@ class Correlator(object):
     
     def _json_writer(self, obj, write_fp):
         """
-        # TODO
+        Internal method to write Python dictionaries as JSON file.
+        
+        Inputs
+        ------
+        obj       : The Python dictionary to jsonify.
+        write_fp  : Destination file path.
+        
         """
         with open(write_fp, 'w') as fp:
             json.dump(obj, fp, indent=4, separators=(',', ': '))
     
     def run(self):
         """
-        # TODO
+        Run the correlator and generates the output in the configured output
+        directory.
+        
         """
         err_msg = 'Error: No Data Pair or Data Directory Assigned!'
         assert self.props['data_pair'] or self.props['data_dir'], err_msg

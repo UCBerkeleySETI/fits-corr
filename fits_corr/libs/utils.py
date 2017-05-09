@@ -243,7 +243,20 @@ def svd_extract_component(data):
 
 def eigh_extract_component(data, compute_uv=False):
     """
-    # TODO
+    Fast implementation of extracting the top components from the right
+    and optionally left singular vectors from <data>.
+    
+    Inputs
+    ------
+    data       : Input data matrix.
+    compute_uv : Get both left and right singular vectors. Defaults to
+                 False i.e. right only.
+    
+    Output
+    ------
+    U, s, V    : The left (U), right (V) singular vectors and variance
+                 (s) of the component.
+    
     """
     N, D = data.shape
     U, s, V = None, None, None
@@ -264,7 +277,18 @@ def eigh_extract_component(data, compute_uv=False):
 
 def outer_product(data_a, data_b):
     """
-    # TODO
+    Computes the outer product between the two vectors given by <data_a>
+    and <data_b>.
+    
+    Inputs
+    ------
+    data_a    : First of the input data pair.
+    data_b    : Second of the input data pair.
+    
+    Output
+    ------
+    Outer product matrix of shape (data_a.size, data_b.size).
+    
     """
     vec_a = data_a.reshape(-1, 1)
     vec_b = data_b.reshape(1, -1)
@@ -274,7 +298,18 @@ def outer_product(data_a, data_b):
 
 def pcc_estimator(data_a, data_b):
     """
-    # TODO
+    Computes the estimated Pearson Correlation Coefficient score between
+    <data_a> and <data_b>.
+    
+    Inputs
+    ------
+    data_a    : First of the input data pair.
+    data_b    : Second of the input data pair.
+    
+    Output
+    ------
+    Float value of the PCC score.
+    
     """
     data_cov = np.sum(data_a * data_b)
     data_mags = np.sqrt(np.square(data_a).sum() * np.square(data_b).sum())
@@ -283,7 +318,18 @@ def pcc_estimator(data_a, data_b):
 
 def prob_hist_2d(data_a, data_b, bins=256):
     """
-    # TODO
+    Computes the joint probability distribution by histogramming the values
+    in <data_a> and <data_b> with bins given by <bins>.
+    
+    Inputs
+    ------
+    data_a    : First of the input data pair.
+    data_b    : Second of the input data pair.
+    
+    Output
+    ------
+    Joint probability distribution matrix of shape (bins, bins).
+    
     """
     N = data_a.size
     bin_r = np.arange(bins+1)
