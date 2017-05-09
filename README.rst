@@ -1,6 +1,8 @@
 FitsCorr
 ========
 
+|License: MIT| |v0.1.0-alpha|
+
 FitsCorr is a Python module for aligning and analyzing correlations
 between pairs of **ON** and **OFF** fits files.
 
@@ -145,3 +147,7 @@ Changelog
 .. _Configuration: #configuration
 .. _Command-Line: #command-line
 .. _Changelog: #changelog
+
+.. |License: MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
+   :target: https://opensource.org/licenses/MIT
+.. |v0.1.0-alpha| image:: https://img.shields.io/badge/release-v0.1.0--alpha-brightgreen.svg
