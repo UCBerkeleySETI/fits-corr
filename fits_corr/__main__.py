@@ -5,7 +5,7 @@ def _description():
     return '\n'.join(
         [
             u'\u250c\u2500 Correlation & Similarity Analysis for FITS data files.',
-            u'\u251c\u2500 Version: 0.1.0-alpha',
+            u'\u251c\u2500 Version: 0.1.1-alpha',
             u'\u2514\u2500 \u00a9 Pragaash Ponnusamy 2017'
         ]
     )
@@ -59,8 +59,8 @@ def main():
     _config = arg_group.add_argument(
         '-c', 
         '--conf', 
-        metavar='FILE', 
-        help='launch with a .json config file',
+        metavar='DIR', 
+        help='directory with a _CONFIG.json file to launch with',
         nargs=1
     )
     
@@ -133,8 +133,8 @@ def main():
     _save = opt_group.add_argument(
         '-s',
         '--save',
-        metavar='PATH',
-        help='savepath for config file'
+        metavar='DIR',
+        help='save directory for config file'
     )
 
     # Parse Arguments

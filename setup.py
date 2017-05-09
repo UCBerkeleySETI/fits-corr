@@ -7,7 +7,7 @@ def readme():
 
 setup(
     name='fits_corr',
-    version='0.1.0a1',
+    version='0.1.1a1',
     description='Correlation & Similarity Analysis for FITS data files.',
     long_description=readme(),
     classifiers=[

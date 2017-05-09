@@ -1,7 +1,7 @@
 FitsCorr
 ========
 
-|License: MIT| |v0.1.0-alpha|
+|License: MIT| |v0.1.1-alpha|
 
 FitsCorr is a Python module for aligning and analyzing correlations
 between pairs of **ON** and **OFF** fits files.
@@ -108,16 +108,16 @@ which yields the following output:
 
 .. code:: text
 
-    usage: fits_corr [-h] (-c FILE | -d DIR | -f ON OFF) [-m] [-g] [-o DIR]
-                     [-w WIDTH] [-prmi RADIUS] [-bins BINS] [-s PATH]
+    usage: fits_corr [-h] (-c DIR | -d DIR | -f ON OFF) [-m] [-g] [-o DIR]
+                 [-w WIDTH] [-prmi RADIUS] [-bins BINS] [-s DIR]
 
     ┌─ Correlation & Similarity Analysis for FITS data files.
-    ├─ Version: 0.1.0-alpha
+    ├─ Version: 0.1.1-alpha
     └─ © Pragaash Ponnusamy 2017
 
     optional arguments:
       -h, --help            show this help message and exit
-      -c FILE, --conf FILE  launch with a .json config file
+      -c DIR, --conf DIR    directory with a _CONFIG.json file to launch with
       -d DIR, --dir DIR     data directory containing .fits files
       -f ON OFF, --file ON OFF
                             path to on and off file pairs
@@ -129,10 +129,16 @@ which yields the following output:
       -w WIDTH              alignment window width
       -prmi RADIUS          neighborhood window radius for PRMI
       -bins BINS            histogram bins for mutual information
-      -s PATH, --save PATH  savepath for config file
+      -s DIR, --save DIR    save directory for config file
 
 Changelog
 ---------
+
+**Version 0.1.1-alpha**
+
+- Minor bug fixes.
+- Updated usage of list comprehensions.
+- Preserved convention of loading configuration file.
 
 **Version 0.1.0-alpha**
 
@@ -150,4 +156,4 @@ Changelog
 
 .. |License: MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target: https://opensource.org/licenses/MIT
-.. |v0.1.0-alpha| image:: https://img.shields.io/badge/release-v0.1.0--alpha-brightgreen.svg
+.. |v0.1.1-alpha| image:: https://img.shields.io/badge/release-v0.1.1--alpha-brightgreen.svg

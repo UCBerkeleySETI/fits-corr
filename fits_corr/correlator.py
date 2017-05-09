@@ -47,7 +47,7 @@ class Correlator(object):
         return self
             
         
-    def load_config(self, config_path):
+    def load_config(self, config_dir):
         """
         Load configuration from a JSON file specified by <config_path>.
         
@@ -56,8 +56,10 @@ class Correlator(object):
         Returns the current correlator (self).
         
         """
+        config_path = path.join(config_dir, '_CONFIG.json')
+        
         err_msg = 'Error: Specified Config File Doesn\'t Exist or not a JSON file.'
-        assert path.isfile(config_path) and config_path.endswith('.json'), err_msg
+        assert path.exists(config_path), err_msg
         
         config = {
             'align_window': lambda v: self.set_align_window(v),
@@ -75,7 +77,8 @@ class Correlator(object):
                 if key in config:
                     config[key](value)
         
-        print '[INFO] Configuration Loaded Successfully!'
+        stdout.write('[INFO] Configuration Loaded Successfully!\n')
+        stdout.flush()
         
         return self
     
@@ -520,16 +523,18 @@ class Correlator(object):
 
             def _worker(queue, data_slice):
                 queue.put([self._score_one(on_fp, off_fp) for on_fp, off_fp in data_slice])
-
-            procs = []
-            for i in range(C):
-                args = (q, pairs[i * chunksize : (i+1) * chunksize])
-                procs.append(Process(target=_worker, args=args))
+            
+            procs = [
+                Process(
+                    target=_worker, 
+                    args=(q, pairs[i * chunksize : (i+1) * chunksize])) 
+                for i in xrange(C)
+            ]
 
             for p in procs:
                 p.start()
 
-            for _ in bar(range(C)):
+            for _ in bar(xrange(C)):
                 collection.extend(q.get())
 
             for p in procs:
