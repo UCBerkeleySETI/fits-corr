@@ -1,7 +1,7 @@
 FitsCorr
 ========
 
-|License: MIT| |v0.1.1-alpha|
+|License: MIT| |v1.0.0|
 
 FitsCorr is a Python module for aligning and analyzing correlations
 between pairs of **ON** and **OFF** fits files.
@@ -23,7 +23,7 @@ the cloned directory’s root:
 
 .. code:: bash
 
-    fits-corr $ pip install
+    fits-corr $ pip install -e .
 
 If you prefer not to install the package and thus available to your
 ``$PATH``, the you can build the package as follows:
@@ -134,6 +134,10 @@ which yields the following output:
 Changelog
 ---------
 
+**Version 1.0.0***
+
+- Minor bug fixes.
+
 **Version 0.1.1-alpha**
 
 - Minor bug fixes.
@@ -156,4 +160,4 @@ Changelog
 
 .. |License: MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target: https://opensource.org/licenses/MIT
-.. |v0.1.1-alpha| image:: https://img.shields.io/badge/release-v0.1.1--alpha-brightgreen.svg
+.. |v1.0.0| image:: https://img.shields.io/badge/release-v1.0.0-brightgreen.svg

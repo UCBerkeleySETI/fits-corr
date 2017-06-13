@@ -1,5 +1,5 @@
 # Imports
-from libs import utils
+from .libs import utils
 from os import path, makedirs
 from sys import stdout
 from multiprocessing import Process, Queue, cpu_count

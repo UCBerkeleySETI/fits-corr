@@ -7,12 +7,12 @@ def readme():
 
 setup(
     name='fits_corr',
-    version='0.1.1a1',
+    version='1.0.0',
     description='Correlation & Similarity Analysis for FITS data files.',
     long_description=readme(),
     classifiers=[
         # Project Maturity
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         
         # Licensing
         'License :: OSI Approved :: MIT License',
@@ -27,7 +27,7 @@ setup(
         'Topic :: Scientific/Engineering :: Information Analysis',
         'Topic :: Scientific/Engineering :: Astronomy',
     ],
-    url='https://github.com/UCBerkeleySETI/fits-corr,
+    url='https://github.com/UCBerkeleySETI/fits-corr',
     author='Pragaash Ponnusamy',
     author_email='pragaash.io@gmail.com',
     license='MIT',

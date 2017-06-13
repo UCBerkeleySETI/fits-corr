@@ -1,1 +1,1 @@
-from correlator import Correlator
+from .correlator import Correlator

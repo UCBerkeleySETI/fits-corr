@@ -1,11 +1,11 @@
-from correlator import Correlator
+from .correlator import Correlator
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 
 def _description():
     return '\n'.join(
         [
             u'\u250c\u2500 Correlation & Similarity Analysis for FITS data files.',
-            u'\u251c\u2500 Version: 0.1.1-alpha',
+            u'\u251c\u2500 Version: 1.0.0',
             u'\u2514\u2500 \u00a9 Pragaash Ponnusamy 2017'
         ]
     )
