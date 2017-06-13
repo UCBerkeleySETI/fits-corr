@@ -18,7 +18,13 @@ Table of Contents
 Installation
 ------------
 
-After cloning this repository, you can run ``pip install`` from within
+Install via ``pip`` directly without manually cloning the repository:
+
+.. code:: bash
+
+    $ pip install -e git+https://github.com/UCBerkeleySETI/fits-corr.git#egg=fits-corr
+
+If you'd like to clone the repository, you can run ``pip install`` from within
 the cloned directory’s root:
 
 .. code:: bash
